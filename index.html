@@ -197,6 +197,7 @@ function start(jobsIn){
       (j.hinweis ? '<div class="hint">' + esc(j.hinweis) + '</div>' : '') +
       '<div class="actions">' +
         '<a class="primary" href="' + esc(j.link) + '" target="_blank" rel="noopener">Zur Stelle / Bewerben ↗</a>' +
+        '<a href="https://www.google.com/search?q=' + encodeURIComponent(j.firma + ' ' + j.titel) + '" target="_blank" rel="noopener">Link tot? Suchen ↗</a>' +
         btn("gemerkt","Merken") + btn("beworben","Beworben") + btn("uninteressant","Nicht interessant") +
       '</div>' +
       '<div style="color:var(--mute);font-size:13px;margin-top:14px">Gefunden am ' + fmt(j.gefunden) + '</div>';
