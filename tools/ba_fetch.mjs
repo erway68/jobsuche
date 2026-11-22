@@ -42,12 +42,9 @@ async function suche(was, ort) {
   return Array.isArray(liste) ? liste : [];
 }
 
-// Diagnose: welche Parameter liefern Treffer?
-for (const q of ["was=Werkstudent", "was=Werkstudent&wo=Frankfurt%20am%20Main&umkreis=50", "was=Werkstudent&veroeffentlichtseit=21",
-                 "was=Regulatory%20Affairs", "was=Werkstudent%20Regulatory%20Affairs", "was=Regulatory%20Affairs&angebotsart=1", "was=Regulatory%20Affairs&arbeitszeit=tz"]) {
-  try { const r = await fetch(`${BASE}/pc/v6/jobs?${q}&size=1`, { headers: HEADERS }); const j = await r.json();
-    console.log("Diagnose", r.status, q, "→", j.maxErgebnisse, Object.keys(j).join(",")); } catch (e) { console.log("Diagnose Fehler", q, e.message); }
-}
+// Diagnose: Aufbau eines Eintrags
+try { const r = await fetch(`${BASE}/pc/v6/jobs?was=Regulatory%20Affairs&size=2`, { headers: HEADERS }); const j = await r.json();
+  console.log("Eintrag:", JSON.stringify(j.ergebnisliste?.[0]).slice(0, 1500)); console.log("Facetten:", JSON.stringify(j.facetten).slice(0, 1200)); } catch (e) { console.log("Diagnose Fehler", e.message); }
 const jobsFile = new URL("../data/jobs.json", import.meta.url);
 const known = new Set(JSON.parse(readFileSync(jobsFile, "utf8")).jobs.map((j) => j.h));
 
