@@ -80,6 +80,7 @@
   <button data-f="hoch">Hohe Passung</button>
   <button data-f="gemerkt">Gemerkt</button>
   <button data-f="beworben">Beworben</button>
+  <button data-f="abgelaufen">Abgelaufen</button>
   <input id="q" type="search" placeholder="Suchen (Firma, Ort, Stichwort) …">
 </div>
 <main>
@@ -107,7 +108,7 @@ async function decryptAll(data, pkcs8){
       var raw = await crypto.subtle.decrypt({name:"RSA-OAEP"}, priv, u8(e.wk));
       var aes = await crypto.subtle.importKey("raw", raw, "AES-GCM", false, ["decrypt"]);
       var pt = await crypto.subtle.decrypt({name:"AES-GCM", iv:u8(e.iv)}, aes, u8(e.ct));
-      var j = JSON.parse(new TextDecoder().decode(pt)); j.id = e.h; j.gefunden = j.gefunden || e.gefunden; out.push(j);
+      var j = JSON.parse(new TextDecoder().decode(pt)); j.id = e.h; j.gefunden = j.gefunden || e.gefunden; j.link = j.link || e.link; j.pruefung = e.pruefung || null; j.abgelaufen = !!(e.pruefung && e.pruefung.status === "abgelaufen"); out.push(j);
     } catch(err){ console.warn("Eintrag nicht lesbar", err); }
   }
   return out;
@@ -117,7 +118,7 @@ async function decryptAll(data, pkcs8){
   try { data = await loadData(); } catch(e){ document.getElementById("err").textContent = "Daten konnten nicht geladen werden."; return; }
   var saved = null; try { saved = localStorage.getItem(KEY_STORE); } catch(e){}
   if (saved){
-    try { var jobs = await decryptAll(data, u8(saved)); document.getElementById("login").remove(); start(jobs); return; }
+    try { var jobs = await decryptAll(data, u8(saved)); document.getElementById("login").remove(); start(jobs, data); return; }
     catch(e){ try{ localStorage.removeItem(KEY_STORE); }catch(_){} }
   }
   document.getElementById("lf").addEventListener("submit", async function(ev){
@@ -128,12 +129,13 @@ async function decryptAll(data, pkcs8){
       var pkcs8 = await unlockWithPassword(data, document.getElementById("pw").value);
       if (document.getElementById("keep").checked){ try{ localStorage.setItem(KEY_STORE, tob64(pkcs8)); }catch(_){} }
       var jobs = await decryptAll(data, pkcs8);
-      document.getElementById("login").remove(); start(jobs);
+      document.getElementById("login").remove(); start(jobs, data);
     } catch(e){ err.textContent = "Falsches Passwort."; btn.disabled = false; btn.textContent = "Entsperren"; }
   });
 })();
 document.getElementById("logout").addEventListener("click", function(){ try{ localStorage.removeItem(KEY_STORE); }catch(_){} location.reload(); });
-function start(jobsIn){
+function start(jobsIn, meta){
+  meta = meta || {};
   var jobs = jobsIn.slice();
   var store = {
     get: function(k,d){ try{ var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
@@ -152,11 +154,19 @@ function start(jobsIn){
 
   var latest = jobs.reduce(function(a,j){ return j.gefunden > a ? j.gefunden : a; }, "");
   document.getElementById("sub").textContent =
-    jobs.length + " Stellen gesamt · " + newIds.length + " neu seit deinem letzten Besuch" + (latest ? " · letzte Aktualisierung " + fmt(latest) : "");
+    jobs.filter(function(j){return !j.abgelaufen}).length + " aktive Stellen · " + newIds.length + " neu seit deinem letzten Besuch" + (latest ? " · zuletzt neue Stelle am " + fmt(latest) : "") +
+    (meta.geprueft ? " · Links geprüft am " + fmt(meta.geprueft.slice(0,10)) : "");
+  var ls = meta.letzteSuche ? new Date(meta.letzteSuche) : null;
+  if (!ls || (Date.now() - ls.getTime()) > 5*86400000){
+    var w = document.createElement("div"); w.className = "hint"; w.style.marginTop = "10px";
+    w.textContent = "⚠ Die automatische Suche lief seit über 5 Tagen nicht mehr" + (ls ? " (zuletzt " + fmt(meta.letzteSuche.slice(0,10)) + ")" : "") + ". Prüfe, ob die geplante Aufgabe noch aktiv ist und GitHub verbunden ist.";
+    document.querySelector("header").appendChild(w);
+  }
 
   function visible(){
     return jobs.filter(function(j){
       var st = status[j.id];
+      if (filter === "abgelaufen") { if (!j.abgelaufen) return false; } else if (j.abgelaufen) return false;
       if (filter === "neu" && newIds.indexOf(j.id) < 0) return false;
       if (filter === "hoch" && j.passung !== "hoch") return false;
       if (filter === "gemerkt" && st !== "gemerkt") return false;
@@ -179,13 +189,14 @@ function start(jobsIn){
     v.forEach(function(j){
       if (j.gefunden !== lastDay){ html += '<div class="day">Gefunden am ' + fmt(j.gefunden) + '</div>'; lastDay = j.gefunden; }
       var st = status[j.id];
-      html += '<button class="job' + (selected===j.id?' sel':'') + (st==="uninteressant"?' dim':'') + '" data-id="' + esc(j.id) + '">' +
+      html += '<button class="job' + (selected===j.id?' sel':'') + ((st==="uninteressant"||j.abgelaufen)?' dim':'') + '" data-id="' + esc(j.id) + '">' +
         '<div class="t">' + esc(j.titel) + '</div>' +
         '<div class="m">' + esc(j.firma) + ' · ' + esc(j.ort) + (j.modus ? ' · ' + esc(j.modus) : '') + '</div>' +
         '<div class="tags">' +
           (newIds.indexOf(j.id) >= 0 ? '<span class="tag neu">Neu</span>' : '') +
           '<span class="tag ' + (j.passung==="hoch"?'':'mittel') + '">Passung ' + esc(j.passung) + '</span>' +
           (st ? '<span class="tag st">' + esc(st) + '</span>' : '') +
+          (j.abgelaufen ? '<span class="tag neu">abgelaufen</span>' : '') +
         '</div></button>';
     });
     el.innerHTML = html;
@@ -203,7 +214,9 @@ function start(jobsIn){
       '<h3>Zusammenfassung</h3><p>' + esc(j.zusammenfassung) + '</p>' +
       (j.warum ? '<h3>Warum es passt</h3><p>' + esc(j.warum) + '</p>' : '') +
       (j.tipp ? '<h3>Tipp für die Bewerbung</h3><p>' + esc(j.tipp) + '</p>' : '') +
+      (j.abgelaufen ? '<div class="hint">Laut automatischer Prüfung seit ' + fmt(j.pruefung.seit || j.pruefung.datum) + ' nicht mehr online.</div>' : '') +
       (j.hinweis ? '<div class="hint">' + esc(j.hinweis) + '</div>' : '') +
+      (j.pruefung && !j.abgelaufen ? '<div style="color:var(--mute);font-size:13px;margin-top:10px">Link zuletzt geprüft: ' + fmt(j.pruefung.datum) + (j.pruefung.hinweis ? ' (' + esc(j.pruefung.hinweis) + ')' : ' – online') + '</div>' : '') +
       '<div class="actions">' +
         '<a class="primary" href="' + esc(j.link) + '" target="_blank" rel="noopener">Zur Stelle / Bewerben ↗</a>' +
         '<a href="https://www.google.com/search?q=' + encodeURIComponent(j.firma + ' ' + j.titel) + '" target="_blank" rel="noopener">Link tot? Suchen ↗</a>' +

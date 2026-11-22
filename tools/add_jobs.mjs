@@ -2,6 +2,7 @@
 // neue_stellen.json = Array von Stellen-Objekten (Felder siehe README.md).
 // Verschlüsselt jede neue Stelle mit dem öffentlichen Schlüssel und hängt sie an data/jobs.json an.
 // Braucht KEIN Passwort. Doppelte Stellen (gleicher Link) werden übersprungen.
+// Auch mit leerem Array [] aufrufen, damit "letzteSuche" aktualisiert wird.
 import { readFileSync, writeFileSync } from "node:fs";
 import { encryptJob, sha256hex, normLink } from "./lib.mjs";
 
@@ -19,9 +20,11 @@ for (const job of incoming) {
   const h = await sha256hex(normLink(job.link));
   if (known.has(h)) { skipped++; continue; }
   const enc = await encryptJob(data.publicKey, job);
-  data.jobs.push({ h, gefunden: job.gefunden, ...enc });
+  data.jobs.push({ h, gefunden: job.gefunden, link: job.link, ...enc });
+  console.log(`+ ${job.firma} – ${job.titel} (${job.ort})`);
   known.add(h); added++;
 }
 data.aktualisiert = new Date().toISOString();
+data.letzteSuche = new Date().toISOString(); // Lebenszeichen der Suche, auch wenn nichts Neues kam
 writeFileSync(file, JSON.stringify(data, null, 1) + "\n");
 console.log(`hinzugefügt: ${added}, übersprungen (schon vorhanden): ${skipped}, gesamt: ${data.jobs.length}`);

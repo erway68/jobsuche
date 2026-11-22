@@ -15,3 +15,12 @@ Statische Seite für GitHub Pages. Alle Stellen in `data/jobs.json` sind verschl
 3. Nur `data/jobs.json` committen und pushen.
 
 Nie `tools/init.mjs` ausführen – das erzeugt neue Schlüssel und macht alle alten Einträge unlesbar.
+
+## Automatische Pflege (GitHub Actions, täglich 05:17 MEZ)
+- `tools/ba_fetch.mjs` holt aktuelle Stellen der Bundesagentur für Arbeit nach `data/ba_kandidaten.json`
+  (Felder: refnr, titel, arbeitgeber, ort, veroeffentlicht, link, externeUrl, bekannt).
+  `bekannt: true` = steht schon auf der Seite.
+- `tools/check_links.mjs` prüft alle Links in `data/jobs.json` mit echten Seitenaufrufen und setzt
+  `pruefung.status` auf `abgelaufen`, wenn eine Stelle zweimal hintereinander eindeutig weg ist.
+- Links stehen bewusst unverschlüsselt in `data/jobs.json` (öffentliche Anzeigen), damit sie geprüft werden können.
+- Vor dem Pushen immer `git pull --rebase origin main`, weil die Action ebenfalls in data/ schreibt.

@@ -1,0 +1,37 @@
+name: Jobsuche-Pflege
+
+# Täglich: neue Stellen der Bundesagentur abrufen und alle Links auf der Seite prüfen.
+on:
+  schedule:
+    - cron: "17 4 * * *"   # 05:17 MEZ, vor der Claude-Suche um 07:33
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: jobsuche-daten
+  cancel-in-progress: false
+
+jobs:
+  pflege:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Stellen der Bundesagentur abrufen
+        run: node tools/ba_fetch.mjs
+        continue-on-error: true
+      - name: Links prüfen
+        run: node tools/check_links.mjs
+      - name: Änderungen speichern
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then echo "Keine Änderungen"; exit 0; fi
+          git commit -m "Pflege: BA-Kandidaten + Linkprüfung $(date +%F)"
+          for i in 1 2 3; do git pull --rebase origin main && git push origin main && break; sleep 5; done
