@@ -18,7 +18,7 @@ Nie `tools/init.mjs` ausführen – das erzeugt neue Schlüssel und macht alle a
 
 ## Automatische Pflege (GitHub Actions, täglich 05:17 MEZ)
 - `tools/ba_fetch.mjs` holt aktuelle Stellen der Bundesagentur für Arbeit nach `data/ba_kandidaten.json`
-  (Felder: refnr, titel, arbeitgeber, ort, veroeffentlicht, link, externeUrl, bekannt).
+  (Felder: refnr, titel, arbeitgeber, ort, veroeffentlicht, link, bekannt, beschreibung, arbeitszeit, homeoffice, vertragsdauer).
   `bekannt: true` = steht schon auf der Seite.
 - `tools/check_links.mjs` prüft alle Links in `data/jobs.json` mit echten Seitenaufrufen und setzt
   `pruefung.status` auf `abgelaufen`, wenn eine Stelle zweimal hintereinander eindeutig weg ist.

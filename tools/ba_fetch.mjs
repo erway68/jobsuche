@@ -86,11 +86,12 @@ for (const k of map.values()) {
     const r = await fetch(DETAIL + Buffer.from(k.refnr).toString("base64"), { headers: HEADERS });
     if (!r.ok) { if (detailFehler++ === 0) console.log("Detail-Abruf HTTP", r.status, k.refnr); continue; }
     const d = await r.json();
-    if (detailOk === 0) console.log("Detail-Felder:", Object.keys(d).join(","));
     const text = d.stellenangebotsBeschreibung || d.stellenbeschreibung || d.beschreibung || "";
     k.beschreibung = String(text).replace(/\s+/g, " ").trim().slice(0, 3000);
-    k.arbeitszeit = [].concat(d.arbeitszeitmodelle || d.arbeitszeit || []).join(", ");
-    k.homeoffice = d.arbeitszeitHeimarbeitTelearbeit ?? d.homeoffice ?? null;
+    k.arbeitszeit = [d.arbeitszeitVollzeit && "Vollzeit", d.arbeitszeitTeilzeitFlexibel && "Teilzeit flexibel", d.arbeitszeitTeilzeitVormittag && "Teilzeit vormittags",
+      d.arbeitszeitTeilzeitNachmittag && "Teilzeit nachmittags", d.arbeitszeitTeilzeitAbend && "Teilzeit abends"].filter(Boolean).join(", ");
+    k.homeoffice = d.homeofficemoeglich ?? null;
+    k.vertragsdauer = d.vertragsdauer || "";
     k.externeUrl = d.allianzpartnerUrl || d.externeUrl || "";
     detailOk++;
   } catch { detailFehler++; }
