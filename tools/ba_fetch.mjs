@@ -37,7 +37,9 @@ async function suche(was, ort) {
   }
   if (!r.ok) throw new Error(`${letzter} | "${was}" / "${ort.wo || "Homeoffice"}"`);
   const j = await r.json();
-  return j.stellenangebote || [];
+  if (!globalThis.__gezeigt) { globalThis.__gezeigt = 1; console.log("Antwort-Felder:", Object.keys(j).join(","), "| Beispiel:", JSON.stringify(j).slice(0, 1200)); }
+  const liste = j.stellenangebote || j.stellenAngebote || j.jobs || j.ergebnisse || j.results || j.content || [];
+  return Array.isArray(liste) ? liste : [];
 }
 
 const jobsFile = new URL("../data/jobs.json", import.meta.url);
