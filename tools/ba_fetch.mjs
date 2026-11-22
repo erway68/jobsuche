@@ -4,8 +4,11 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { sha256hex, normLink } from "./lib.mjs";
 
-const API = "https://rest.arbeitsagentur.de/jobboerse/jobsuche-service/pc/v4/jobs";
-const HEADERS = { "X-API-Key": "jobboerse-jobsuche", "User-Agent": "Mozilla/5.0 (jobsuche-burak)", Accept: "application/json" };
+const BASE = "https://rest.arbeitsagentur.de/jobboerse/jobsuche-service";
+// Laut bundesAPI-Doku ist /pc/v6/jobs aktuell, v4 als Rückfall.
+const PFADE = ["/pc/v6/jobs", "/pc/v4/jobs"];
+let API = null;
+const HEADERS = { "X-API-Key": "jobboerse-jobsuche", "User-Agent": "jobsuche-burak (private Stellensuche; github.com/erway68/jobsuche)", Accept: "application/json" };
 const TAGE = 21;
 
 const BEGRIFFE = [
@@ -25,8 +28,14 @@ async function suche(was, ort) {
   const p = new URLSearchParams({ was, size: "50", page: "1", veroeffentlichtseit: String(TAGE) });
   if (ort.wo) { p.set("wo", ort.wo); p.set("umkreis", String(ort.umkreis)); }
   if (ort.arbeitszeit) p.set("arbeitszeit", ort.arbeitszeit);
-  const r = await fetch(`${API}?${p}`, { headers: HEADERS });
-  if (!r.ok) throw new Error(`HTTP ${r.status} für "${was}" / "${ort.wo || "Homeoffice"}"`);
+  const kandidaten = API ? [API] : PFADE.map((x) => BASE + x);
+  let r, letzter = "";
+  for (const url of kandidaten) {
+    r = await fetch(`${url}?${p}`, { headers: HEADERS });
+    if (r.ok) { if (!API) { API = url; console.log("Verwende Endpunkt:", url); } break; }
+    letzter = `${url} → HTTP ${r.status}`;
+  }
+  if (!r.ok) throw new Error(`${letzter} | "${was}" / "${ort.wo || "Homeoffice"}"`);
   const j = await r.json();
   return j.stellenangebote || [];
 }
