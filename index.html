@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Jobsuche · Regulatory Affairs</title>
+<style>
+  :root{--bg:#f6f7f8;--card:#fff;--ink:#16202a;--mute:#5d6b78;--line:#e2e6ea;--accent:#0f7c80;--accent-soft:#e3f2f2;--new:#c2410c;--warn:#9a6700;--warn-bg:#fff6dc}
+  @media (prefers-color-scheme:dark){:root{--bg:#12161a;--card:#1b2127;--ink:#e8edf1;--mute:#97a3ae;--line:#2b333b;--accent:#4fb8bb;--accent-soft:#1d3536;--new:#fb923c;--warn:#e3b341;--warn-bg:#2d2610}}
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+  header{padding:28px 24px 12px;max-width:1100px;margin:auto}
+  h1{margin:0;font-size:24px}
+  .sub{color:var(--mute);margin-top:4px}
+  .bar{max-width:1100px;margin:auto;padding:8px 24px 16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .bar button,.bar input{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+  .bar input{border-radius:8px;cursor:text;flex:1;min-width:180px}
+  .bar button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  main{max-width:1100px;margin:auto;padding:0 24px 48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:20px}
+  @media (max-width:820px){main{grid-template-columns:1fr}}
+  .list{display:flex;flex-direction:column;gap:10px}
+  .day{font-size:13px;color:var(--mute);margin:10px 2px 0;font-weight:600}
+  .job{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%}
+  .job:hover{border-color:var(--accent)}
+  .job.sel{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+  .job.dim{opacity:.5}
+  .job .t{font-weight:600}
+  .job .m{color:var(--mute);font-size:13px}
+  .tags{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+  .tag{font-size:12px;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+  .tag.neu{background:transparent;border:1px solid var(--new);color:var(--new)}
+  .tag.mittel{background:var(--line);color:var(--mute)}
+  .tag.st{background:transparent;border:1px solid var(--line);color:var(--mute)}
+  .detail{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;position:sticky;top:16px;align-self:start}
+  .detail h2{margin:0 0 4px;font-size:20px}
+  .detail h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);margin:18px 0 4px}
+  .detail p{margin:0}
+  .hint{background:var(--warn-bg);color:var(--warn);padding:8px 10px;border-radius:8px;margin-top:14px;font-size:14px}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+  .actions a,.actions button{font:inherit;padding:8px 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;text-decoration:none}
+  .actions a.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .actions button.on{border-color:var(--accent);color:var(--accent);font-weight:600}
+  .empty{color:var(--mute);padding:20px}
+  #login{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px;z-index:9}
+  #login form{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px;width:100%;max-width:360px}
+  #login h1{font-size:20px;margin-bottom:6px}
+  #login input[type=password]{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);margin:14px 0 10px}
+  #login button{width:100%;font:inherit;font-weight:600;padding:10px;border:0;border-radius:8px;background:var(--accent);color:#fff;cursor:pointer}
+  #login label{display:flex;gap:8px;align-items:center;color:var(--mute);font-size:14px;margin-bottom:14px}
+  #err{color:var(--new);font-size:14px;min-height:20px;margin-top:10px}
+  .logout{float:right;font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--mute);border-radius:999px;padding:4px 12px;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="login"><form id="lf">
+  <h1>Jobsuche</h1><div class="sub">Privater Bereich. Bitte Passwort eingeben.</div>
+  <input id="pw" type="password" autocomplete="current-password" placeholder="Passwort" autofocus>
+  <label><input id="keep" type="checkbox" checked> Auf diesem Gerät angemeldet bleiben</label>
+  <button type="submit" id="go">Entsperren</button>
+  <div id="err"></div>
+</form></div>
+<header>
+  <button class="logout" id="logout">Abmelden</button>
+  <h1>Jobsuche · Regulatory Affairs</h1>
+  <div class="sub" id="sub"></div>
+</header>
+<div class="bar" id="bar">
+  <button data-f="alle" class="on">Alle</button>
+  <button data-f="neu">Neu</button>
+  <button data-f="hoch">Hohe Passung</button>
+  <button data-f="gemerkt">Gemerkt</button>
+  <button data-f="beworben">Beworben</button>
+  <input id="q" type="search" placeholder="Suchen (Firma, Ort, Stichwort) …">
+</div>
+<main>
+  <div class="list" id="list"></div>
+  <aside class="detail" id="detail"><div class="empty">Stelle links anklicken, um die Zusammenfassung zu sehen.</div></aside>
+</main>
+<script>
+var DATA_URL = "data/jobs.json";
+var KEY_STORE = "rajobs_key";
+function u8(b64){ var s = atob(b64), a = new Uint8Array(s.length); for (var i=0;i<s.length;i++) a[i]=s.charCodeAt(i); return a; }
+function tob64(buf){ var a = new Uint8Array(buf), s = ""; for (var i=0;i<a.length;i++) s += String.fromCharCode(a[i]); return btoa(s); }
+async function loadData(){ var r = await fetch(DATA_URL + "?t=" + Date.now(), {cache:"no-store"}); if (!r.ok) throw new Error("Daten nicht ladbar"); return r.json(); }
+async function unlockWithPassword(data, pw){
+  var e = data.encPrivateKey;
+  var base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
+  var k = await crypto.subtle.deriveKey({name:"PBKDF2", salt:u8(e.salt), iterations:e.iter, hash:"SHA-256"}, base, {name:"AES-GCM", length:256}, false, ["decrypt"]);
+  return crypto.subtle.decrypt({name:"AES-GCM", iv:u8(e.iv)}, k, u8(e.ct));
+}
+async function decryptAll(data, pkcs8){
+  var priv = await crypto.subtle.importKey("pkcs8", pkcs8, {name:"RSA-OAEP", hash:"SHA-256"}, false, ["decrypt"]);
+  var out = [];
+  for (var i=0;i<data.jobs.length;i++){
+    var e = data.jobs[i];
+    try {
+      var raw = await crypto.subtle.decrypt({name:"RSA-OAEP"}, priv, u8(e.wk));
+      var aes = await crypto.subtle.importKey("raw", raw, "AES-GCM", false, ["decrypt"]);
+      var pt = await crypto.subtle.decrypt({name:"AES-GCM", iv:u8(e.iv)}, aes, u8(e.ct));
+      var j = JSON.parse(new TextDecoder().decode(pt)); j.id = e.h; j.gefunden = j.gefunden || e.gefunden; out.push(j);
+    } catch(err){ console.warn("Eintrag nicht lesbar", err); }
+  }
+  return out;
+}
+(async function boot(){
+  var data;
+  try { data = await loadData(); } catch(e){ document.getElementById("err").textContent = "Daten konnten nicht geladen werden."; return; }
+  var saved = null; try { saved = localStorage.getItem(KEY_STORE); } catch(e){}
+  if (saved){
+    try { var jobs = await decryptAll(data, u8(saved)); document.getElementById("login").remove(); start(jobs); return; }
+    catch(e){ try{ localStorage.removeItem(KEY_STORE); }catch(_){} }
+  }
+  document.getElementById("lf").addEventListener("submit", async function(ev){
+    ev.preventDefault();
+    var btn = document.getElementById("go"), err = document.getElementById("err");
+    btn.disabled = true; btn.textContent = "Entsperre …"; err.textContent = "";
+    try {
+      var pkcs8 = await unlockWithPassword(data, document.getElementById("pw").value);
+      if (document.getElementById("keep").checked){ try{ localStorage.setItem(KEY_STORE, tob64(pkcs8)); }catch(_){} }
+      var jobs = await decryptAll(data, pkcs8);
+      document.getElementById("login").remove(); start(jobs);
+    } catch(e){ err.textContent = "Falsches Passwort."; btn.disabled = false; btn.textContent = "Entsperren"; }
+  });
+})();
+document.getElementById("logout").addEventListener("click", function(){ try{ localStorage.removeItem(KEY_STORE); }catch(_){} location.reload(); });
+function start(jobsIn){
+  var jobs = jobsIn.slice();
+  var store = {
+    get: function(k,d){ try{ var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+    set: function(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  };
+  var seen = store.get("rajobs_seen", null);
+  var status = store.get("rajobs_status", {});
+  var firstVisit = seen === null;
+  seen = seen || [];
+  var newIds = firstVisit ? jobs.map(function(j){return j.id}) : jobs.filter(function(j){return seen.indexOf(j.id) < 0}).map(function(j){return j.id});
+  store.set("rajobs_seen", jobs.map(function(j){return j.id}));
+
+  var filter = "alle", query = "", selected = null;
+  var fmt = function(d){ var p = d.split("-"); return p[2]+"."+p[1]+"."+p[0]; };
+  var esc = function(s){ return String(s||"").replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]}); };
+
+  var latest = jobs.reduce(function(a,j){ return j.gefunden > a ? j.gefunden : a; }, "");
+  document.getElementById("sub").textContent =
+    jobs.length + " Stellen gesamt · " + newIds.length + " neu seit deinem letzten Besuch" + (latest ? " · letzte Aktualisierung " + fmt(latest) : "");
+
+  function visible(){
+    return jobs.filter(function(j){
+      var st = status[j.id];
+      if (filter === "neu" && newIds.indexOf(j.id) < 0) return false;
+      if (filter === "hoch" && j.passung !== "hoch") return false;
+      if (filter === "gemerkt" && st !== "gemerkt") return false;
+      if (filter === "beworben" && st !== "beworben") return false;
+      if (query){
+        var hay = [j.firma,j.titel,j.ort,j.modus,j.zusammenfassung].join(" ").toLowerCase();
+        if (hay.indexOf(query) < 0) return false;
+      }
+      return true;
+    }).sort(function(a,b){
+      if (a.gefunden !== b.gefunden) return a.gefunden < b.gefunden ? 1 : -1;
+      return (a.passung === "hoch" ? 0 : 1) - (b.passung === "hoch" ? 0 : 1);
+    });
+  }
+
+  function renderList(){
+    var el = document.getElementById("list"), html = "", lastDay = "";
+    var v = visible();
+    if (!v.length){ el.innerHTML = '<div class="empty">Keine Stellen für diesen Filter.</div>'; return; }
+    v.forEach(function(j){
+      if (j.gefunden !== lastDay){ html += '<div class="day">Gefunden am ' + fmt(j.gefunden) + '</div>'; lastDay = j.gefunden; }
+      var st = status[j.id];
+      html += '<button class="job' + (selected===j.id?' sel':'') + (st==="uninteressant"?' dim':'') + '" data-id="' + esc(j.id) + '">' +
+        '<div class="t">' + esc(j.titel) + '</div>' +
+        '<div class="m">' + esc(j.firma) + ' · ' + esc(j.ort) + (j.modus ? ' · ' + esc(j.modus) : '') + '</div>' +
+        '<div class="tags">' +
+          (newIds.indexOf(j.id) >= 0 ? '<span class="tag neu">Neu</span>' : '') +
+          '<span class="tag ' + (j.passung==="hoch"?'':'mittel') + '">Passung ' + esc(j.passung) + '</span>' +
+          (st ? '<span class="tag st">' + esc(st) + '</span>' : '') +
+        '</div></button>';
+    });
+    el.innerHTML = html;
+  }
+
+  function renderDetail(){
+    var el = document.getElementById("detail");
+    var j = jobs.filter(function(x){return x.id===selected})[0];
+    if (!j){ el.innerHTML = '<div class="empty">Stelle links anklicken, um die Zusammenfassung zu sehen.</div>'; return; }
+    var st = status[j.id];
+    var btn = function(key,label){ return '<button data-st="'+key+'" class="'+(st===key?'on':'')+'">'+label+'</button>'; };
+    el.innerHTML =
+      '<h2>' + esc(j.titel) + '</h2>' +
+      '<div class="m" style="color:var(--mute)">' + esc(j.firma) + ' · ' + esc(j.ort) + (j.modus?' · '+esc(j.modus):'') + (j.stunden?' · '+esc(j.stunden):'') + '</div>' +
+      '<h3>Zusammenfassung</h3><p>' + esc(j.zusammenfassung) + '</p>' +
+      (j.warum ? '<h3>Warum es passt</h3><p>' + esc(j.warum) + '</p>' : '') +
+      (j.tipp ? '<h3>Tipp für die Bewerbung</h3><p>' + esc(j.tipp) + '</p>' : '') +
+      (j.hinweis ? '<div class="hint">' + esc(j.hinweis) + '</div>' : '') +
+      '<div class="actions">' +
+        '<a class="primary" href="' + esc(j.link) + '" target="_blank" rel="noopener">Zur Stelle / Bewerben ↗</a>' +
+        btn("gemerkt","Merken") + btn("beworben","Beworben") + btn("uninteressant","Nicht interessant") +
+      '</div>' +
+      '<div style="color:var(--mute);font-size:13px;margin-top:14px">Gefunden am ' + fmt(j.gefunden) + '</div>';
+  }
+
+  document.getElementById("list").addEventListener("click", function(e){
+    var b = e.target.closest(".job"); if (!b) return;
+    selected = b.getAttribute("data-id"); renderList(); renderDetail();
+  });
+  document.getElementById("detail").addEventListener("click", function(e){
+    var b = e.target.closest("button[data-st]"); if (!b || !selected) return;
+    var k = b.getAttribute("data-st");
+    if (status[selected] === k) delete status[selected]; else status[selected] = k;
+    store.set("rajobs_status", status); renderList(); renderDetail();
+  });
+  document.getElementById("bar").addEventListener("click", function(e){
+    var b = e.target.closest("button[data-f]"); if (!b) return;
+    filter = b.getAttribute("data-f");
+    [].forEach.call(document.querySelectorAll(".bar button"), function(x){ x.classList.toggle("on", x===b); });
+    renderList();
+  });
+  document.getElementById("q").addEventListener("input", function(e){ query = e.target.value.trim().toLowerCase(); renderList(); });
+
+  renderList();
+}
+</script>
+</body>
+</html>
