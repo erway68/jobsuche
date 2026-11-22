@@ -32,9 +32,11 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-22"
+    "datum": "2026-11-22",
+    "hinweis": "Seite blockiert automatische Prüfung"
    }
   }
  ],
- "letzteSuche": "2026-11-22T19:28:35.139Z"
+ "letzteSuche": "2026-11-22T19:28:35.139Z",
+ "geprueft": "2026-11-22T19:29:57.761Z"
 }
