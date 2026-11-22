@@ -7,15 +7,18 @@ const file = new URL("../data/jobs.json", import.meta.url);
 const data = JSON.parse(readFileSync(file, "utf8"));
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36";
 const TOT = /(nicht mehr verf(ü|ue)gbar|no longer (available|active|accepting)|existiert nicht|page not found|seite nicht gefunden|stelle ist (bereits )?besetzt|position has been filled|job (has )?expired|stellenanzeige ist abgelaufen|this job is closed|bewerbungsfrist ist abgelaufen)/i;
-const BA_API = "https://rest.arbeitsagentur.de/jobboerse/jobsuche-service/pc/v4/jobdetails/";
+const BA_API = "https://rest.arbeitsagentur.de/jobboerse/jobsuche-service/pc/v6/jobs";
 
 async function pruefe(link) {
   const ba = link.match(/arbeitsagentur\.de\/jobsuche\/jobdetail\/([^/?#]+)/);
   try {
     if (ba) {
-      const r = await fetch(BA_API + Buffer.from(ba[1]).toString("base64"), { headers: { "X-API-Key": "jobboerse-jobsuche", "User-Agent": UA } });
-      if (r.status === 404 || r.status === 410) return "tot";
-      return r.ok ? "ok" : "unklar";
+      // BA-Stellen: über die offizielle Suche nach der Referenznummer prüfen (0 Treffer = nicht mehr veröffentlicht)
+      const ref = decodeURIComponent(ba[1]);
+      const r = await fetch(`${BA_API}?was=${encodeURIComponent(ref)}&size=5`, { headers: { "X-API-Key": "jobboerse-jobsuche", "User-Agent": "jobsuche-burak (private Stellensuche; github.com/erway68/jobsuche)" } });
+      if (!r.ok) return "unklar";
+      const j = await r.json();
+      return (j.ergebnisliste || []).some((x) => x.referenznummer === ref) ? "ok" : "tot";
     }
     const ctl = AbortSignal.timeout(20000);
     const r = await fetch(link, { redirect: "follow", signal: ctl, headers: { "User-Agent": UA, "Accept-Language": "de-DE,de;q=0.9,en;q=0.8", Accept: "text/html" } });

@@ -10,6 +10,8 @@ const TAGE = 30;
 
 // Fachlich passend (Titel/Beruf)
 const FACH = /regulat|zulassung|qualit|\bqm\b|\bqms\b|\bqa\b|medizin|medical|med-?tech|health|gesundheit|pharma|clinical|klinisch|compliance|datenschutz|informationssicherheit|dokumentation|\biso\b|\bmdr\b|\bivd\b|validierung|diagnost|biotech|life ?science|samd|diga|hl7|fhir/i;
+// Ausschluss: Ausbildungsplätze, Praxis-Assistenz, fachfremde Pflichtpraktika
+const RAUS = /ausbildung|auszubildend|azubi|fachangestellte|\bmfa\b|\bzfa\b|\bpta\b|\bpka\b|tierarzt|zahnarzt|pflegefach|erzieher|ern(ä|ae)hrung|marketing|vertrieb|sales|tax|steuer|controlling|human resources|personal|actuarial/i;
 // Studentisch
 const STUDENT = /werkstudent|working student|studentische|student\b|studierende|praktik|intern\b|internship|praxissemester|pflichtpraktikum/i;
 
@@ -59,7 +61,8 @@ for (const a of ABFRAGEN) {
       if (!ref || map.has(ref)) continue;
       const titel = s.stellenangebotsTitel || s.hauptberuf || "";
       const text = `${titel} ${s.hauptberuf || ""} ${(s.alleBerufe || []).join(" ")}`;
-      if (!a.filter.test(text)) continue;
+      if (!a.filter.test(text) || !FACH.test(text) || RAUS.test(text)) continue;
+      if (!a.wo && !STUDENT.test(text)) continue;
       const datum = s.datumErsteVeroeffentlichung || (s.aenderungsdatum || "").slice(0, 10);
       if (datum && datum < grenze) continue;
       const adr = s.stellenlokationen?.[0]?.adresse || {};
@@ -80,11 +83,3 @@ writeFileSync(new URL("../data/ba_kandidaten.json", import.meta.url),
   JSON.stringify({ aktualisiert: new Date().toISOString(), tage: TAGE, roh, anzahl: stellen.length, fehler, stellen }, null, 1) + "\n");
 console.log(`BA: ${roh} Rohtreffer → ${stellen.length} passende Kandidaten (neu: ${stellen.filter((s) => !s.bekannt).length}), Fehler: ${fehler}`);
 
-// Diagnose für die Linkprüfung: findet die Suche eine Stelle über ihre Referenznummer?
-if (stellen[0]) {
-  const r = await fetch(`${API}?was=${encodeURIComponent(stellen[0].refnr)}&size=5`, { headers: HEADERS });
-  const j = await r.json();
-  console.log("Diagnose Ref-Suche:", stellen[0].refnr, "→", j.maxErgebnisse, (j.ergebnisliste || []).map((x) => x.referenznummer).join(","));
-  const r2 = await fetch(`${API}?was=${encodeURIComponent("12345-INVALID_XX0000000-S")}&size=5`, { headers: HEADERS });
-  console.log("Diagnose Ref-Suche ungültig →", (await r2.json()).maxErgebnisse);
-}
