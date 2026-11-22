@@ -49,6 +49,11 @@
   #login button{width:100%;font:inherit;font-weight:600;padding:10px;border:0;border-radius:8px;background:var(--accent);color:#fff;cursor:pointer}
   #login label{display:flex;gap:8px;align-items:center;color:var(--mute);font-size:14px;margin-bottom:14px}
   #err{color:var(--new);font-size:14px;min-height:20px;margin-top:10px}
+  .runbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+  .runbtn{font:inherit;font-weight:600;padding:8px 16px;border:0;border-radius:8px;background:var(--accent);color:#fff;cursor:pointer}
+  .runbtn:disabled{opacity:.6;cursor:default}
+  .gear{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--mute);border-radius:999px;padding:4px 12px;cursor:pointer}
+  #runmsg{font-size:14px;color:var(--mute)}
   .logout{float:right;font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--mute);border-radius:999px;padding:4px 12px;cursor:pointer}
 </style>
 </head>
@@ -64,6 +69,10 @@
   <button class="logout" id="logout">Abmelden</button>
   <h1>Jobsuche · Regulatory Affairs</h1>
   <div class="sub" id="sub"></div>
+  <div class="runbar">
+    <a class="runbtn" id="runbtn" href="https://claude.ai/code/routines/trig_01G3UTqimTkU8pXMUeDwhJKe" target="_blank" rel="noopener" style="text-decoration:none">🔍 Jetzt neue Stellen suchen</a>
+    <span id="runmsg">Öffnet deine Such-Aufgabe bei Claude – dort auf <b>Run now</b> klicken. Neue Stellen erscheinen nach ca. 10–20 Min.</span>
+  </div>
 </header>
 <div class="bar" id="bar">
   <button data-f="alle" class="on">Alle</button>
