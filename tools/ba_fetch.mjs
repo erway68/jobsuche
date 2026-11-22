@@ -77,6 +77,26 @@ for (const a of ABFRAGEN) {
   } catch (e) { fehler++; console.error(e.message); }
   await new Promise((r) => setTimeout(r, 300));
 }
+// Stellenbeschreibungen für neue Kandidaten direkt mitholen (damit Claude die Seiten nicht aufrufen muss)
+const DETAIL = "https://rest.arbeitsagentur.de/jobboerse/jobsuche-service/pc/v4/jobdetails/";
+let detailOk = 0, detailFehler = 0;
+for (const k of map.values()) {
+  if (k.bekannt) continue;
+  try {
+    const r = await fetch(DETAIL + Buffer.from(k.refnr).toString("base64"), { headers: HEADERS });
+    if (!r.ok) { if (detailFehler++ === 0) console.log("Detail-Abruf HTTP", r.status, k.refnr); continue; }
+    const d = await r.json();
+    if (detailOk === 0) console.log("Detail-Felder:", Object.keys(d).join(","));
+    const text = d.stellenangebotsBeschreibung || d.stellenbeschreibung || d.beschreibung || "";
+    k.beschreibung = String(text).replace(/\s+/g, " ").trim().slice(0, 3000);
+    k.arbeitszeit = [].concat(d.arbeitszeitmodelle || d.arbeitszeit || []).join(", ");
+    k.homeoffice = d.arbeitszeitHeimarbeitTelearbeit ?? d.homeoffice ?? null;
+    k.externeUrl = d.allianzpartnerUrl || d.externeUrl || "";
+    detailOk++;
+  } catch { detailFehler++; }
+  await new Promise((r) => setTimeout(r, 300));
+}
+console.log(`Details: ${detailOk} ok, ${detailFehler} fehlgeschlagen`);
 if (fehler === ABFRAGEN.length) { console.error("Alle Abfragen fehlgeschlagen – Datei bleibt unverändert."); process.exit(1); }
 const stellen = [...map.values()].sort((a, b) => (b.veroeffentlicht || "").localeCompare(a.veroeffentlicht || ""));
 writeFileSync(new URL("../data/ba_kandidaten.json", import.meta.url),
