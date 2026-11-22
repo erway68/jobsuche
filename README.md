@@ -24,3 +24,9 @@ Nie `tools/init.mjs` ausführen – das erzeugt neue Schlüssel und macht alle a
   `pruefung.status` auf `abgelaufen`, wenn eine Stelle zweimal hintereinander eindeutig weg ist.
 - Links stehen bewusst unverschlüsselt in `data/jobs.json` (öffentliche Anzeigen), damit sie geprüft werden können.
 - Vor dem Pushen immer `git pull --rebase origin main`, weil die Action ebenfalls in data/ schreibt.
+
+## Seite (index.html)
+- Bewerbungs-Tracker (Status, Bewerbungsdatum, Notizen, Nachhaken nach 14 Tagen) – gespeichert im Browser (localStorage `rajobs_track`).
+- Board-Ansicht mit Drag & Drop, Kennzahlen, Filter/Sortierung.
+- „Anschreiben entwerfen“: öffnet claude.ai mit vorbereitetem Prompt; Profiltext liegt verschlüsselt in `data/jobs.json` → `profil` (setzen mit `node tools/set_profile.mjs datei.txt`).
+- Installierbar als App (manifest.webmanifest, sw.js). Bei Änderungen an index.html die CACHE-Version in sw.js erhöhen.
