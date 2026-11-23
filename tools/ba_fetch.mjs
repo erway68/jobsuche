@@ -28,7 +28,13 @@ const ABFRAGEN = [
   { was: "Qualitätsmanagement Medizintechnik", filter: STUDENT },
   { was: "Medical Device", filter: STUDENT },
   { was: "Digital Health", filter: STUDENT },
+  // Bundesweit mit Homeoffice: nur behalten, wenn die Anzeige Homeoffice/Remote erlaubt (Prüfung über Details)
+  ...["Werkstudent Qualitätsmanagement", "Werkstudent Qualitätssicherung", "Werkstudent Regulatory", "Werkstudent Medizintechnik",
+      "Werkstudent Medizininformatik", "Werkstudent Gesundheitswesen", "Werkstudent Pharma", "Werkstudent Datenschutz",
+      "Werkstudent Informationssicherheit", "Werkstudent Compliance", "Werkstudent Health", "Working Student Healthcare"]
+    .map((was) => ({ was, filter: STUDENT, remote: true })),
 ];
+const REMOTE_TEXT = /remote|home-?office|mobiles? arbeiten|ortsunabh(ä|ae)ngig|deutschlandweit|von zu hause/i;
 
 async function holeAlle(a) {
   const out = [];
@@ -72,6 +78,7 @@ for (const a of ABFRAGEN) {
         ort: [adr.plz, adr.ort].filter(Boolean).join(" "), region: adr.region || "",
         veroeffentlicht: datum, art: s.stellenangebotsart || "", vollzeit: !!s.arbeitszeitVollzeit,
         link, bekannt: known.has(await sha256hex(normLink(link))), abfrage: `${a.was}${a.wo ? " / " + a.wo : " / bundesweit"}`,
+        kategorie: a.wo ? "region" : a.remote ? "remote" : "bundesweit",
       });
     }
   } catch (e) { fehler++; console.error(e.message); }
@@ -98,6 +105,15 @@ for (const k of map.values()) {
   await new Promise((r) => setTimeout(r, 300));
 }
 console.log(`Details: ${detailOk} ok, ${detailFehler} fehlgeschlagen`);
+// Remote-Kandidaten ohne Homeoffice-Möglichkeit verwerfen (Kandidaten außerhalb der Region ebenfalls markieren)
+let remoteRaus = 0;
+for (const [ref, k] of map) {
+  if (k.kategorie === "region" || k.bekannt) continue;
+  const ho = k.homeoffice === true || REMOTE_TEXT.test(k.beschreibung || "") || REMOTE_TEXT.test(k.titel);
+  k.remoteMoeglich = ho;
+  if (k.kategorie === "remote" && !ho) { map.delete(ref); remoteRaus++; }
+}
+console.log(`Remote-Filter: ${remoteRaus} ohne Homeoffice verworfen`);
 if (fehler === ABFRAGEN.length) { console.error("Alle Abfragen fehlgeschlagen – Datei bleibt unverändert."); process.exit(1); }
 const stellen = [...map.values()].sort((a, b) => (b.veroeffentlicht || "").localeCompare(a.veroeffentlicht || ""));
 writeFileSync(new URL("../data/ba_kandidaten.json", import.meta.url),
