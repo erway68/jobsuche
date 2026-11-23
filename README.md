@@ -30,3 +30,8 @@ Nie `tools/init.mjs` ausführen – das erzeugt neue Schlüssel und macht alle a
 - Board-Ansicht mit Drag & Drop, Kennzahlen, Filter/Sortierung.
 - „Anschreiben entwerfen“: öffnet claude.ai mit vorbereitetem Prompt; Profiltext liegt verschlüsselt in `data/jobs.json` → `profil` (setzen mit `node tools/set_profile.mjs datei.txt`).
 - Installierbar als App (manifest.webmanifest, sw.js). Bei Änderungen an index.html die CACHE-Version in sw.js erhöhen.
+
+## Felder für Bereich/Ausland (in neu.json)
+- `bereich`: "region" (Rhein-Main/Gießen), "remote" (Deutschland, Homeoffice), "ausland"; `land` bei Ausland (z. B. "Niederlande").
+- Auslandsstellen erscheinen nur im Filter „🌍 Ausland“, nicht in „Offen“.
+- In ba_kandidaten.json: `kategorie` (region | remote | bundesweit) und `remoteMoeglich`.

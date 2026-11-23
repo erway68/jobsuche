@@ -313,7 +313,8 @@ function App(res, meta){
   var daysSince = function(d){ return d ? Math.floor((Date.now() - new Date(d).getTime()) / 86400000) : 0; };
   var st = function(j){ return (track[j.id] && track[j.id].status) || ""; };
   var isNew = function(j){ return newIds.indexOf(j.id) >= 0; };
-  var remote = function(j){ return /remote|hybrid|homeoffice|home office|mobil/i.test((j.modus||"") + " " + (j.hinweis||"")); };
+  var ausland = function(j){ return j.bereich === "ausland"; };
+  var remote = function(j){ return j.bereich === "remote" || /remote|hybrid|homeoffice|home office|mobil/i.test((j.modus||"") + " " + (j.hinweis||"")); };
   var follow = function(j){ var t = track[j.id]; return t && t.status === "beworben" && daysSince(t.beworbenAm || t.seit) >= NACHHAKEN_TAGE; };
   function save(){ store.set(TRACK_STORE, track); }
   function setStatus(id, s){
@@ -345,7 +346,7 @@ function App(res, meta){
     var antw = bew.filter(function(j){ return ["gespraech","zusage","absage"].indexOf(st(j)) >= 0; }).length;
     var warten = jobs.filter(function(j){ return st(j) === "beworben"; }).length;
     var items = [
-      { n: aktiv.filter(function(j){ return ["absage","aussortiert"].indexOf(st(j)) < 0; }).length, l: "aktive Stellen", f: "offen" },
+      { n: aktiv.filter(function(j){ return !ausland(j) && ["absage","aussortiert"].indexOf(st(j)) < 0; }).length, l: "aktive Stellen", f: "offen" },
       { n: newIds.length, l: "neu seit letztem Besuch", f: "neu", hl: newIds.length > 0 },
       { n: bew.length, l: "Bewerbungen", f: "bewerbungen" },
       { n: warten, l: "warten auf Antwort", f: "nachhaken" },
@@ -355,10 +356,11 @@ function App(res, meta){
   }
 
   var FILTER = [
-    { k: "offen", l: "Offen", fn: function(j){ return !j.abgelaufen && ["absage","aussortiert"].indexOf(st(j)) < 0; } },
+    { k: "offen", l: "Offen", fn: function(j){ return !j.abgelaufen && !ausland(j) && ["absage","aussortiert"].indexOf(st(j)) < 0; } },
     { k: "neu", l: "Neu", fn: function(j){ return isNew(j) && !j.abgelaufen; } },
     { k: "hoch", l: "Hohe Passung", fn: function(j){ return j.passung === "hoch" && !j.abgelaufen && st(j) !== "aussortiert"; } },
-    { k: "remote", l: "Remote/Hybrid", fn: function(j){ return remote(j) && !j.abgelaufen && st(j) !== "aussortiert"; } },
+    { k: "remote", l: "Remote/Hybrid", fn: function(j){ return remote(j) && !ausland(j) && !j.abgelaufen && st(j) !== "aussortiert"; } },
+    { k: "ausland", l: "🌍 Ausland", fn: function(j){ return ausland(j) && !j.abgelaufen && st(j) !== "aussortiert"; } },
     { k: "bewerbungen", l: "Meine Bewerbungen", fn: function(j){ return ["beworben","gespraech","zusage","absage"].indexOf(st(j)) >= 0; } },
     { k: "nachhaken", l: "Nachhaken", fn: function(j){ return follow(j); } },
     { k: "aussortiert", l: "Aussortiert", fn: function(j){ return st(j) === "aussortiert"; } },
@@ -367,7 +369,7 @@ function App(res, meta){
   function renderChips(){
     $("chips").innerHTML = FILTER.map(function(f){
       var c = jobs.filter(f.fn).length;
-      if (!c && ["nachhaken","aussortiert","abgelaufen","bewerbungen"].indexOf(f.k) >= 0 && state.filter !== f.k) return "";
+      if (!c && ["nachhaken","aussortiert","abgelaufen","bewerbungen","ausland"].indexOf(f.k) >= 0 && state.filter !== f.k) return "";
       return '<button class="chip' + (state.filter === f.k ? ' on' : '') + '" data-f="' + f.k + '">' + f.l + '<span class="c">' + c + '</span></button>';
     }).join("");
   }
@@ -390,7 +392,8 @@ function App(res, meta){
     var s = st(j), lab = (STATI.filter(function(x){ return x.k === s; })[0] || {}).l;
     return (isNew(j) && !j.abgelaufen ? '<span class="tag new">Neu</span>' : '') +
       (j.passung === "hoch" ? '<span class="tag hi">Passung hoch</span>' : '<span class="tag">Passung mittel</span>') +
-      (remote(j) ? '<span class="tag">Remote/Hybrid</span>' : '') +
+      (ausland(j) ? '<span class="tag">🌍 ' + esc(j.land || "Ausland") + '</span>' : '') +
+      (remote(j) ? '<span class="tag">' + (j.bereich === "remote" ? 'Remote DE' : 'Remote/Hybrid') + '</span>' : '') +
       (lab ? '<span class="tag st">' + esc(lab) + '</span>' : '') +
       (follow(j) ? '<span class="tag follow">Nachhaken?</span>' : '') +
       (j.abgelaufen ? '<span class="tag dead">abgelaufen</span>' : '');
@@ -418,7 +421,7 @@ function App(res, meta){
   function renderBoard(){
     var all = visible(true);
     var html = COLS.map(function(c){
-      var items = all.filter(function(j){ var s = st(j); return c.k === "ende" ? (s === "zusage" || s === "absage") : s === c.k; });
+      var items = all.filter(function(j){ var s = st(j); if (c.k === "" && ausland(j)) return false; return c.k === "ende" ? (s === "zusage" || s === "absage") : s === c.k; });
       return '<div class="col" data-col="' + c.k + '"><h4>' + c.l + ' <span>' + items.length + '</span></h4>' + items.map(function(j){ return card(j, true); }).join("") + '</div>';
     }).join("");
     $("main").innerHTML = '<div class="board" id="board">' + html + '</div><aside class="detail" id="detail" style="display:none"></aside>';
