@@ -19,7 +19,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-25"
+    "datum": "2026-11-26"
    }
   },
   {
@@ -32,7 +32,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-25",
+    "datum": "2026-11-26",
     "hinweis": "Seite blockiert automatische Prüfung"
    }
   },
@@ -46,7 +46,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-25"
+    "datum": "2026-11-26"
    }
   },
   {
@@ -59,7 +59,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-25"
+    "datum": "2026-11-26"
    }
   },
   {
@@ -72,7 +72,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-25"
+    "datum": "2026-11-26"
    }
   },
   {
@@ -85,7 +85,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-25"
+    "datum": "2026-11-26"
    }
   },
   {
@@ -98,7 +98,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-25"
+    "datum": "2026-11-26"
    }
   },
   {
@@ -110,8 +110,8 @@
    "ct": "TQhO7SCWeDyac/yrrWFYexb5oE/pikXeiKPe84DBSKz9RLw4AtPsdXVh84O8OylaaPoiFLoVTiKA5vfzaB5gu+KN/NOZ1GesgN0CqpvKSxsFK7bp4pzfiGtiTY8286d/TocdnGaAZlHR7OnaVUewRikz+vsPI/+oyiupjEetwkDZ4zk5NSE0ZSxBWibjCIlc2cIFJuPxnepshQngt0XQtCXDG5UYWQjLNLdZQQKA90ZnCUBdmFw5cnysEtWWWjD0YWjPQNYsFvHyfitphpP8P1ROdzECH62G9PHXZlAVFc4nzYdyDZgDVwNebO58RTv1hol+z1PQA3iorT377I4YrPmekooJI74hxv7CP+8De5l51SZH+EryuTxxe6BCLPNeWiOaBWon6dcuE6EQBZHGqMXWUeShs0g5LOlOlX2zRbIlEVkzYcMTmJFEeC5yRMY9o1oICxCh5qAYhkGvAozeJ2OyCk5ilZp+M6flxfZllvfyppXj9XgVy8MeRaZs0RVcKga4nuRH/YBZLYkAAJV2JIN2vAl9YIOJXNbOyvzaz2022bDDY4I/09dAMAG66fYHjMGKOm6zM7enO+nzmIDiQLC/sbBbsBJmfmrQJJrL8bdcMi98GjhaJ7e3KagJZ1a5pWAgIAYwA8BDEIZKy2bMVhdxAjDTiUhZtU7d0WtPBXWjWUjWE+h2HWXJW1i0nhmT5yzRxDRpeyhnA3khGh1omc4ER5o5Lr55XsmMl0wmABS1X6bDOnDDjTrthuu7WhQiY2jC1QTk2yp/yrht1aGj2dJp2Ar0muTYwLM8iUWweNc2NkgVkPx8/pKGIew7Gb2sUfNN8Zv8NmV89bbQevKZo9zrbSmlzPZEivjZ3ujEDU5s+DQKbgueq7d5kZ9Axg8gUKkb7rIc8QitmmINU3kYMPFTqo3P2HbQCuMKzLRXMjxrZ6al5k7wSgXnJuG6fE3ORM61WwTF+SDg3pPfS1XrhHhJSIUTzbZfj8M6kD7p8Gt+5lYfPQpimI115V6UqJCyRVz/KlbwfwBmd7S3piA2qgOuZ3WxN5JsfpysZJoZVgjkRO81fOxnGOf8AtnN5AWBkPnydSJs7YYmXxI+EgzjGlt3OvU+O1fTGOSJ0c6JO/cAm7fOsomeqaK2lsNFrmDmIrVGwfdoPZLt2vc++2HePkMyUABECjyBqWqbwadHFXNNH/8JfrBDD7OGbE8SGmgJuOyBoWZAeyF0avexzwbcp07fr7fPe4qM11nsec/IXE9I2001q1F1n3us5Ijyytoi4Zax7HEHz+XkUd6m0UKe2cxi1QmqXpxbgwwBoy2OUS1AyJWutGRD5A00Gfk+D1joDr1kG4XS9JaXXeKsHXWnECSnEBgZywEsRd7BDRPXsB16jPJ5lL2zR96KVl3sBGWxh5INeOwlKCfm",
    "pruefung": {
     "status": "ok",
-    "fehl": 0,
-    "datum": "2026-11-25"
+    "fehl": 1,
+    "datum": "2026-11-26"
    }
   },
   {
@@ -124,7 +124,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-25"
+    "datum": "2026-11-26"
    }
   },
   {
@@ -137,7 +137,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-25"
+    "datum": "2026-11-26"
    }
   },
   {
@@ -162,9 +162,10 @@
    "iv": "ibQxfPRaKwHond1k",
    "ct": "drgYjJDUivK3u+cgDxhgNyy+M6iH8xNfTgI+ipks3iH5MnyIGRkCJnhQY71tP24ZDt/EwrAaOBeF7gKrTgFvPWTEKkTKXsSN44Lqrd4uPCCRRvvhwZLOtZDJoYwhMmbFK/NxWeHpUNXCpfWyJLXRpBpLGTqdrCZPiop3o0+S29Nhwtc41ow4j9Qp1qBV6WX7rSGdrDRmPWDALBZ691JRCm4kT/StREYDr0JqNSrxh4rUQTswnuZn/VQHbYpgxWnY9BN2HOojJJNS36lYHj3Wh9HNvTdmfkPAY5O+BFTHsGw5JxbMeaNohMuA25QLxRX92QR119PrCdoCnryqqtutBOyUCVVTCGVJ5pIjJ+zy/FvKC+HFu9vloQciqvTnDZbHQj+NmoWaVQdFiTg4bcPYJOlzpZ2ORb6ZMzw9WRpEUJgKc+tNU6kDJeD50M6aOxAnl9S84z0lYC58+x+NA2ifsB8J+hXWdU844MqAswkKIcIRM9i5DBPrTiHam7zxsI367olepGEQi96U+FxjuZS/nyiA42fhNJUROWZWhMNf9ImvSkppAf4UOLM56gNkgUEUsgiDPEDO71tsUszOp9JSYnIs07DjwKBoow6EmcGXIiyQ+pqPqgFp6EFjkKPVzXT17yKctCM/s6cjc2LVQ8lFrJWe2eSEfOCMwyDIzwuNpYlMYEaqVi+F/gQbJfiWEwnY+oXKsq/7S5ycehZlsoe0wCyocDbd03KBF79jBpIxWKCqxu7MinTuiakCpIt/KHPjwfqqpxvZvTN7HbakiKiuH28yEgWLWxzKjY/eIRVwDLrtqjxHIYwVUiCyaAXAmSnD9FNyTfuEV6Do9+Nj1F316EzKFOBjnZYZDn3/nIMW6ONuxybw2GAJngxaUHEzuQFYADPj4pxpLNRGCQG2g8FpJ+SMe9uKjJ8fZJ0UpxoR2MgVZUHJGnxz3CY6nBWizidhHtC2ZCX45H9q8YDmvHaR63Bo31DPMpikc4gZMt894P5wLUgj7wt9N+/aoMBPtv8EvVxLeQbgigDwEqOZ1ebRrPTReLceoROLMPYCWqdjPHJXkd1rTGJqQM6Q0Dy00DwOMHBZ502bE0qonqT41EVxecn0rbDJJOVjZtwxIAdBTS70WKRxI8xkpFGokR7B6/8y9TDqLXSXxoR8/14QNiZ+C+k+3tSO57DtZuW3asUacqVvijrmsOBKcxQV9lDwT2a3fLdiIe1lG6p5TAkZUlHHBIB9QM0q4BDBiVabkXgPhTZHL368HlCIrEq/7Yh9Vr914HqXcyKy7goPNb0EOmYjymAOmibOPfg18BtqDQOJXXlSCy1iue3w5d9Lti76s3J4+eZNVeD+NyIAA1a5ZZr3oRgr+ChCaxkyCu71C4TDsezJ8wecajXA7BstLsEiSKxgzd3zIsocqTicEWSpinSJP7uT7aOToPVi2rwVsJlYvWdR3nxw2hS71a95FVd+2QMb7ezrwnP/jIx/MhXdA3dxkj7SYKnJhgg7NVxpTv4TWadWfkMbtzAd6/MR9kRB0qms3XsL+k/ZMY9+erlGX78JSz/3Q0AZnezBsgToGtK88dCwuXQiT10DNjcmYJHxv2+hBUVjKJ9TlZwowI6XmQw4aVPjlFT3Z2l1I47NoxXAn3FvIqfZx1x4UWdbtP8Od9W0yUZ/Y6tDgUgPfWm5D+o9x3RSwdNFsFRLnMltjF9i6bGtmIZLTPtoye5AVJoy+SNOGzETxcdnmR6zlKg158JBxkbyrRpWJ/2/3B4Y75GdyqBe4hoCRBSENTQhyMwYEqZhwC6ZMlcc4A==",
    "pruefung": {
-    "status": "ok",
-    "fehl": 1,
-    "datum": "2026-11-25"
+    "status": "abgelaufen",
+    "fehl": 2,
+    "datum": "2026-11-26",
+    "seit": "2026-11-26"
    }
   },
   {
@@ -177,7 +178,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-25"
+    "datum": "2026-11-26"
    }
   },
   {
@@ -190,12 +191,12 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-25"
+    "datum": "2026-11-26"
    }
   }
  ],
  "letzteSuche": "2026-11-25T06:34:54.558Z",
- "geprueft": "2026-11-25T14:23:05.699Z",
+ "geprueft": "2026-11-26T13:55:46.208Z",
  "profil": {
   "wk": "Lpg5ys/f2P6/nUFt/jFrV57V+5FsvkWDk95QF3p9ZFGh4yuDIC7JvAEmMTUDnDpVCRshgTEERA+0Thjmu+/ECLQ0gjZS4hU+5+AEIf2yi4cMiCAmXeFaDfYleFyCwv66Mn2f71Js7HWBk7YlL8O5rVudisd02IeU74MjYgUIhvvzk5CfdHGkmKncbZRj+xM3/1YXUPuT3cexhnhnFe0zh+AylX9U9TxldW5p0SdwNFuDXVvDiqLWxU4wKVSb2+qpR27XNK/+Cf6OHQzGZiaLwgZarBsCyAoPmZzban2F+mSHku8EkPD2Ztn+7h43y3qqWAQbv7z0O9/JInDkNp/sjg==",
   "iv": "bpJ1p5ZRfaum094Y",
