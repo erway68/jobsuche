@@ -19,7 +19,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-26"
+    "datum": "2026-11-27"
    }
   },
   {
@@ -32,7 +32,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-26",
+    "datum": "2026-11-27",
     "hinweis": "Seite blockiert automatische Prüfung"
    }
   },
@@ -46,7 +46,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-26"
+    "datum": "2026-11-27"
    }
   },
   {
@@ -59,7 +59,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-26"
+    "datum": "2026-11-27"
    }
   },
   {
@@ -72,7 +72,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-26"
+    "datum": "2026-11-27"
    }
   },
   {
@@ -85,7 +85,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-26"
+    "datum": "2026-11-27"
    }
   },
   {
@@ -98,7 +98,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-26"
+    "datum": "2026-11-27"
    }
   },
   {
@@ -109,9 +109,10 @@
    "iv": "xaG/wfy7zsAP8yZS",
    "ct": "TQhO7SCWeDyac/yrrWFYexb5oE/pikXeiKPe84DBSKz9RLw4AtPsdXVh84O8OylaaPoiFLoVTiKA5vfzaB5gu+KN/NOZ1GesgN0CqpvKSxsFK7bp4pzfiGtiTY8286d/TocdnGaAZlHR7OnaVUewRikz+vsPI/+oyiupjEetwkDZ4zk5NSE0ZSxBWibjCIlc2cIFJuPxnepshQngt0XQtCXDG5UYWQjLNLdZQQKA90ZnCUBdmFw5cnysEtWWWjD0YWjPQNYsFvHyfitphpP8P1ROdzECH62G9PHXZlAVFc4nzYdyDZgDVwNebO58RTv1hol+z1PQA3iorT377I4YrPmekooJI74hxv7CP+8De5l51SZH+EryuTxxe6BCLPNeWiOaBWon6dcuE6EQBZHGqMXWUeShs0g5LOlOlX2zRbIlEVkzYcMTmJFEeC5yRMY9o1oICxCh5qAYhkGvAozeJ2OyCk5ilZp+M6flxfZllvfyppXj9XgVy8MeRaZs0RVcKga4nuRH/YBZLYkAAJV2JIN2vAl9YIOJXNbOyvzaz2022bDDY4I/09dAMAG66fYHjMGKOm6zM7enO+nzmIDiQLC/sbBbsBJmfmrQJJrL8bdcMi98GjhaJ7e3KagJZ1a5pWAgIAYwA8BDEIZKy2bMVhdxAjDTiUhZtU7d0WtPBXWjWUjWE+h2HWXJW1i0nhmT5yzRxDRpeyhnA3khGh1omc4ER5o5Lr55XsmMl0wmABS1X6bDOnDDjTrthuu7WhQiY2jC1QTk2yp/yrht1aGj2dJp2Ar0muTYwLM8iUWweNc2NkgVkPx8/pKGIew7Gb2sUfNN8Zv8NmV89bbQevKZo9zrbSmlzPZEivjZ3ujEDU5s+DQKbgueq7d5kZ9Axg8gUKkb7rIc8QitmmINU3kYMPFTqo3P2HbQCuMKzLRXMjxrZ6al5k7wSgXnJuG6fE3ORM61WwTF+SDg3pPfS1XrhHhJSIUTzbZfj8M6kD7p8Gt+5lYfPQpimI115V6UqJCyRVz/KlbwfwBmd7S3piA2qgOuZ3WxN5JsfpysZJoZVgjkRO81fOxnGOf8AtnN5AWBkPnydSJs7YYmXxI+EgzjGlt3OvU+O1fTGOSJ0c6JO/cAm7fOsomeqaK2lsNFrmDmIrVGwfdoPZLt2vc++2HePkMyUABECjyBqWqbwadHFXNNH/8JfrBDD7OGbE8SGmgJuOyBoWZAeyF0avexzwbcp07fr7fPe4qM11nsec/IXE9I2001q1F1n3us5Ijyytoi4Zax7HEHz+XkUd6m0UKe2cxi1QmqXpxbgwwBoy2OUS1AyJWutGRD5A00Gfk+D1joDr1kG4XS9JaXXeKsHXWnECSnEBgZywEsRd7BDRPXsB16jPJ5lL2zR96KVl3sBGWxh5INeOwlKCfm",
    "pruefung": {
-    "status": "ok",
-    "fehl": 1,
-    "datum": "2026-11-26"
+    "status": "abgelaufen",
+    "fehl": 2,
+    "datum": "2026-11-27",
+    "seit": "2026-11-27"
    }
   },
   {
@@ -124,7 +125,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-26"
+    "datum": "2026-11-27"
    }
   },
   {
@@ -137,7 +138,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-26"
+    "datum": "2026-11-27"
    }
   },
   {
@@ -178,7 +179,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-26"
+    "datum": "2026-11-27"
    }
   },
   {
@@ -191,7 +192,7 @@
    "pruefung": {
     "status": "ok",
     "fehl": 0,
-    "datum": "2026-11-26"
+    "datum": "2026-11-27"
    }
   },
   {
@@ -200,11 +201,16 @@
    "link": "https://www.arbeitsagentur.de/jobsuche/jobdetail/10001-1004070203-S",
    "wk": "IJKX+u6qE8ZA5+vNKJ4zMCR9W/RIrfoV4IyFuHodyLHQdp/vAJBC4XPE/pUR2PEIDH4r0lFa0qLXIRQVTfVEU891io79s1s/iOoO8t9Z2Rzk6QJ9R4xeqUchlQF00azvnJkzHhcXh8MWjCv/RtnZQT5O+bN7w5bVG6u7oek1EC8kpwspVGJZXUfONKbhumDVRwZFZSvsY8UbhvZtA79YOD4mqjMp5OGH6DhlgDI+WwCu/S7PLjqgp/pb3KaQrbkIJwjHFstPuZ83/1P8NSZp3prnGHmDnuUot+YsGdDi9OD64B+qSETXcoI0ozogbL70dhjQnOj4GE2tElYBxo0Rig==",
    "iv": "TcIwgVuJpu8NNgqU",
-   "ct": "ZtZ9oTpVedkqVzuDv7vttPhcHVfyHdMrHNYy+LwDzjSIK/cWpagtdOCqhWPawu2rVuwRJK3QelcljllDuZHBP8WXeEE45QeMGCTGDU0v/Qr9fRHIdixr3r9mK6RNMcw8IVANakZu7eVub1+aHzwKXqnLVJzLk6whMr1cDnT7q+oSEnEylbtHCpaWg6aSv3V6xNb2HXuHHaD5c/aovvhAK4WDw+0HxwxvCUgyCUafGRMYW7J5UwoaYfuxhpghKLu1mFCIlpLffCnchkUWLqD6zwBfq1atm3j9irYViw2OECpPM856Eba/D7O/vrcsDCmzFHkhjjLfuMNz5P0/EMI+987XUhOoN8R17EPFByE2ePwc1Bn1RNp/tRWMP68Ujx//Q0RbHDrtwo4Bbbjhea6m33pPPfCk2o9p57+T5YaEhdO0BaFTrThA0CuaRZJGV+dm6CtrKYjs00jgg/GHNN+recYejlgJrYcz+FNQkythvq8Uzuq99IJuPTFCuv3g2JEIaBAeoJiJdHGl6U8QRD+LVbBbfLanLAg9OVgWMpK+GsKdj4dPUWHixP83BE3ZxZL8d4b5X73gW5zIedrPVMarEARj82PNL/9aJZ8V5EVN07+y/bZ4VbNzEKL4d7rTPnbtMvKXdYb60Ojyi/aI/KYodat9XoWXY0SCQC+schcMEUMjNPmhY9zz9HzNA8HUPGb6671eoa+7By0D3DhnuzvN/pQadJ200BufhU2bTTPUtnqdqF6FZJ8+f2f241elnfQDBZlG7Xlbmsjmz3dJzE/Xpbo+m2HXZ5USmaXlV9jLJOy21OZrSCzbPWLaY8mSwDGgNkFZYg0YnQhEtjmHvAYEASwjbt+yNhbbl8aZjJHwNv8+gDwtoX+fyyDf12ldQWFNDYn9R2Shv7Qvds1vy0Pl0f2/hpOyoLMJ1MuJqIx8uzvHe9iTRaw0AvBUz/iz5ea/kdoWwKHqgHtDo4i3ihKVdsqKJbjoNJh3iUG66p/wp5YB2U97zKh2lKNsIyHjq22BsFdUWh7M3YsKvK6t5ikKWQPitf1+StvnHl15iSnzsCmzBVFr/K6het5UgsYgdH0VqXkgm4xpvwgluvdzJ5LSpwWejhoDs+KNSQV00iMEXls9CLVHVLs7DoJhj8VfPsCP2HyW9Wa81oglmC3zrbp2vuk/kLNBCKLoyfByy+EKQNZ40XJo9Y42ICXqQyO0nuoVK4okmbD0ZZBWepJqX5oO9/+c7QZ2GVNoGz+hyjgHuEUJSF8IEcvnaAKtdgPHJyvmA4ULuotePUrm5pXROj8ZR+kn/r4RpOFpUXnjKrTK90D7xTUEWVOBmXTpWMQyhmEToivPcqGscWzxlRBkwR6+/74XTO3sP61DTWhaylodqokZni4fm9TkoYqZmTYp/LH8qAeeSVXGtFCoSM9pLvRkN+v9mwt4J/uoWSfUV1zJplARlsm81xge6BRsD6XEy/4QWgf19Qj+kRhlSROsZl06cHawJwdtnfjgV2kpK2pfhCHA9ikeVXuvDIwsV06UGzk2RgNCbawkoyKht7+cb1CyhqvrWP5iqG/M8plckQCt14/kyOVSK0lvDGdyp7hX+M1Tu/zUTq8P+4Va2QpZ7+H6uXOOWxtIj66r8iBU+wWLYxA4IoSZ97pCFzyRzjMxNnphdHtDWUdXXtIT9AtY0UwM1o+sGzlZd4HztlNckyHtDnjKP57opdwhc1qlOiazKLjS51qOhTcZwAl+qiIMSjJoSK9PH3mQlyCeCUkgCoQ="
+   "ct": "ZtZ9oTpVedkqVzuDv7vttPhcHVfyHdMrHNYy+LwDzjSIK/cWpagtdOCqhWPawu2rVuwRJK3QelcljllDuZHBP8WXeEE45QeMGCTGDU0v/Qr9fRHIdixr3r9mK6RNMcw8IVANakZu7eVub1+aHzwKXqnLVJzLk6whMr1cDnT7q+oSEnEylbtHCpaWg6aSv3V6xNb2HXuHHaD5c/aovvhAK4WDw+0HxwxvCUgyCUafGRMYW7J5UwoaYfuxhpghKLu1mFCIlpLffCnchkUWLqD6zwBfq1atm3j9irYViw2OECpPM856Eba/D7O/vrcsDCmzFHkhjjLfuMNz5P0/EMI+987XUhOoN8R17EPFByE2ePwc1Bn1RNp/tRWMP68Ujx//Q0RbHDrtwo4Bbbjhea6m33pPPfCk2o9p57+T5YaEhdO0BaFTrThA0CuaRZJGV+dm6CtrKYjs00jgg/GHNN+recYejlgJrYcz+FNQkythvq8Uzuq99IJuPTFCuv3g2JEIaBAeoJiJdHGl6U8QRD+LVbBbfLanLAg9OVgWMpK+GsKdj4dPUWHixP83BE3ZxZL8d4b5X73gW5zIedrPVMarEARj82PNL/9aJZ8V5EVN07+y/bZ4VbNzEKL4d7rTPnbtMvKXdYb60Ojyi/aI/KYodat9XoWXY0SCQC+schcMEUMjNPmhY9zz9HzNA8HUPGb6671eoa+7By0D3DhnuzvN/pQadJ200BufhU2bTTPUtnqdqF6FZJ8+f2f241elnfQDBZlG7Xlbmsjmz3dJzE/Xpbo+m2HXZ5USmaXlV9jLJOy21OZrSCzbPWLaY8mSwDGgNkFZYg0YnQhEtjmHvAYEASwjbt+yNhbbl8aZjJHwNv8+gDwtoX+fyyDf12ldQWFNDYn9R2Shv7Qvds1vy0Pl0f2/hpOyoLMJ1MuJqIx8uzvHe9iTRaw0AvBUz/iz5ea/kdoWwKHqgHtDo4i3ihKVdsqKJbjoNJh3iUG66p/wp5YB2U97zKh2lKNsIyHjq22BsFdUWh7M3YsKvK6t5ikKWQPitf1+StvnHl15iSnzsCmzBVFr/K6het5UgsYgdH0VqXkgm4xpvwgluvdzJ5LSpwWejhoDs+KNSQV00iMEXls9CLVHVLs7DoJhj8VfPsCP2HyW9Wa81oglmC3zrbp2vuk/kLNBCKLoyfByy+EKQNZ40XJo9Y42ICXqQyO0nuoVK4okmbD0ZZBWepJqX5oO9/+c7QZ2GVNoGz+hyjgHuEUJSF8IEcvnaAKtdgPHJyvmA4ULuotePUrm5pXROj8ZR+kn/r4RpOFpUXnjKrTK90D7xTUEWVOBmXTpWMQyhmEToivPcqGscWzxlRBkwR6+/74XTO3sP61DTWhaylodqokZni4fm9TkoYqZmTYp/LH8qAeeSVXGtFCoSM9pLvRkN+v9mwt4J/uoWSfUV1zJplARlsm81xge6BRsD6XEy/4QWgf19Qj+kRhlSROsZl06cHawJwdtnfjgV2kpK2pfhCHA9ikeVXuvDIwsV06UGzk2RgNCbawkoyKht7+cb1CyhqvrWP5iqG/M8plckQCt14/kyOVSK0lvDGdyp7hX+M1Tu/zUTq8P+4Va2QpZ7+H6uXOOWxtIj66r8iBU+wWLYxA4IoSZ97pCFzyRzjMxNnphdHtDWUdXXtIT9AtY0UwM1o+sGzlZd4HztlNckyHtDnjKP57opdwhc1qlOiazKLjS51qOhTcZwAl+qiIMSjJoSK9PH3mQlyCeCUkgCoQ=",
+   "pruefung": {
+    "status": "ok",
+    "fehl": 0,
+    "datum": "2026-11-27"
+   }
   }
  ],
  "letzteSuche": "2026-11-27T06:34:25.039Z",
- "geprueft": "2026-11-26T13:55:46.208Z",
+ "geprueft": "2026-11-27T13:53:07.469Z",
  "profil": {
   "wk": "Lpg5ys/f2P6/nUFt/jFrV57V+5FsvkWDk95QF3p9ZFGh4yuDIC7JvAEmMTUDnDpVCRshgTEERA+0Thjmu+/ECLQ0gjZS4hU+5+AEIf2yi4cMiCAmXeFaDfYleFyCwv66Mn2f71Js7HWBk7YlL8O5rVudisd02IeU74MjYgUIhvvzk5CfdHGkmKncbZRj+xM3/1YXUPuT3cexhnhnFe0zh+AylX9U9TxldW5p0SdwNFuDXVvDiqLWxU4wKVSb2+qpR27XNK/+Cf6OHQzGZiaLwgZarBsCyAoPmZzban2F+mSHku8EkPD2Ztn+7h43y3qqWAQbv7z0O9/JInDkNp/sjg==",
   "iv": "bpJ1p5ZRfaum094Y",
