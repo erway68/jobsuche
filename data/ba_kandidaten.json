@@ -1,8 +1,8 @@
 {
- "aktualisiert": "2026-11-27T13:52:51.971Z",
+ "aktualisiert": "2026-11-28T13:00:18.040Z",
  "tage": 30,
- "roh": 3028,
- "anzahl": 36,
+ "roh": 2983,
+ "anzahl": 33,
  "fehler": 0,
  "stellen": [
   {
@@ -24,26 +24,6 @@
    "homeoffice": null,
    "vertragsdauer": "BEFRISTET",
    "externeUrl": "http://www.arbeitsagentur.de"
-  },
-  {
-   "refnr": "12465-1658563-1-S",
-   "titel": "Werkstudent (w/m/d) im Bereich Data Quality Management",
-   "beruf": "Betriebswirt/in (Hochschule)",
-   "arbeitgeber": "Siemens AG",
-   "ort": "60306 Frankfurt am Main",
-   "region": "HESSEN",
-   "veroeffentlicht": "2026-11-26",
-   "art": "PRAKTIKUM_TRAINEE",
-   "vollzeit": true,
-   "link": "https://www.arbeitsagentur.de/jobsuche/jobdetail/12465-1658563-1-S",
-   "bekannt": false,
-   "abfrage": "Werkstudent / Frankfurt am Main",
-   "kategorie": "region",
-   "beschreibung": "**Art der Anstellung:** Befristet / 15-20 Stunden/Woche Starte als Werkstudent (w/m/d) im Bereich Data Quality Management an einem unserer Standorte in Frankfurt am Main, Laatzen, Düsseldorf, Berlin, Rostock oder Hamburg und gestalte mit uns die Datenlandschaft von morgen – bring deine Leidenschaft für Daten ein und werde Teil unserer deutschlandweiten Community! Werde Teil unseres Working Student Network – einer Community, die dir Austausch, Unterstützung und wertvolle Kontakte bei Siemens bietet. **Verändere die Welt von morgen:** - Du unterstützt das Team bei der Durchführung von Datenbereinigungen und trägst dazu bei, eine hohe Datenqualität als Grundlage für neue Tools und Prozesse sicherzustellen- Anschließend hilfst du bei der Auswertung und Analyse von KPIs im Equipment-Umfeld, sodass Optimierungspotenziale frühzeitig erkannt werden können- Darüber hinaus beteiligst du dich aktiv an der deutschlandweiten Zusammenarbeit innerhalb der Data Quality Management Community und bringst deine eigenen Ideen und Vorschläge ein **So überzeugst du uns:** - **Ausbildung**: Du studierst derzeit erfolgreich Betriebswirtschaftslehre, Wirtschaftsingenieurwesen, Wirtschaftsinformatik oder einen vergleichbaren Studiengang- **Erfahrungen und Kenntnisse**:- Du bist sicher im Umgang mit dem gesamten MS Office Paket, idealerweise auch mit SAP- Du hast ein ausgeprägtes analytisches Denkvermögen und findest auch kleinste Fehler in Datenmengen- Du bringst erste Erfahrungen im Bereich Datenmanagement oder Datenanalyse mit - **Arbeitsweise**: Deine Eigeninitiative, Team- und Kommunikationsfähigkeit sowie deine offene Art machen dich zum überzeugenden Netzwerker- **Sprachkenntnisse**: Du sprichst Deutsch fließend und kannst dich sicher auf Englisch verständigen Du bist viel mehr als deine Qualifikationen und wir glauben an das Potential jeder einzelnen Person. Wir freuen uns darauf, dich kennenzulernen! Bei Siemens sind wir überzeugt: Wer sich wertgeschätzt und zugehörig fühlt, kann das eigene Potenzial voll entwickeln. Deshalb schaffen wir ein inklusives Arbeitsumfeld, in dem jede Person ein Gefühl der Zugehörigkeit erfährt und in dem individuelle Perspektiven und Erfahrungen geschätzt werden. Unser Engagement für Fairness und Respekt gilt für alle Bewerbenden. Wir legen Wert auf [Chancengleichheit ](https://www.siemens.com/de/de/unternehmen/jobs/arbeiten-bei-siemens/inklusion.html)und freuen uns über Bewerbungen von Menschen mit unterschiedlichen Hintergründen, ausdrücklich auch von Menschen mit Behinderung. **Über Uns** Bereit, die Zukunft aktiv mitzugestalten? Im Bereich Smart Infrastructure Buildings bei Siemens nehmen wir die Herausforderung an, Gebäude intelligenter, sicherer und nachhaltiger zu gestalten. Werde Teil unseres Teams und entwickle innovative Lösungen in den Bereichen Gebäudeautomation, Brandschutz und Sicherheit. Bringe deine Expertise ein und helfe uns, nachhaltige Zukunftsprodukte für unsere Kunden zu entwickeln. Transform the everyday with us! ",
-   "arbeitszeit": "Vollzeit",
-   "homeoffice": false,
-   "vertragsdauer": "UNBEFRISTET",
-   "externeUrl": "www.siemens.de/jobboerse"
   },
   {
    "refnr": "10001-1004076473-S",
@@ -277,26 +257,6 @@
    "bekannt": true,
    "abfrage": "Werkstudent / Frankfurt am Main",
    "kategorie": "region"
-  },
-  {
-   "refnr": "18989-984543888-S",
-   "titel": "Praktikum Risk & Regulation Banken (w/m/d)",
-   "beruf": "Risikomanager/in",
-   "arbeitgeber": "PricewaterhouseCoopers GmbH WPG",
-   "ort": "60327 Frankfurt am Main",
-   "region": "HESSEN",
-   "veroeffentlicht": "2026-11-18",
-   "art": "PRAKTIKUM_TRAINEE",
-   "vollzeit": true,
-   "link": "https://www.arbeitsagentur.de/jobsuche/jobdetail/18989-984543888-S",
-   "bekannt": false,
-   "abfrage": "Praktikum / Frankfurt am Main",
-   "kategorie": "region",
-   "beschreibung": "#### Join our Community of Solvers Für unseren Geschäftsbereich **[Consulting](https://jobs.pwc.de/de/de/consulting-solutions)** suchen wir dich zum **nächstmöglichen Zeitpunkt** als **Praktikant Risk &amp; Regulation Banken (w/m/d).** **Das erwartet dich** **Beratung** – Im Bereich Riskmanagement unterstützt du bei mathematischen Fragestellungen sowie bei der Bewertung, der Quantifizierung und der Modellierung von Risiken. Dabei baust du Expertise in den Bereichen Kapitalmärkte und Kreditgeschäfte auf. **Regulatory Management** – Ob Credit, Market, Liquidity oder Operational Risk - hier unterstützt du in Projekten bei deutschen, europäischen und internationalen Banken. Du begleitest unsere Kunden über die gesamte Prozesskette von der Analyse der strategischen Auswirkungen auf das Geschäftsmodell bis hin zur Umsetzung in der Gesamtbank inklusive der IT-Infrastruktur. **Vielfalt** – Du unterstützt uns bei Datenauswertungen und der Aufarbeitung von Fachthemen. Gleichzeitig lernst du die Kredit-, Risikomanagement- und Handelsbereiche unserer international agierenden Kunden kennen und hilfst bei der Sicherstellung angemessener Prozesse im Front-, Middle- und Backoffice. **Projekte** – Du wirst in die Mandats- und Projektarbeit eingebunden und bekommst Einblicke über die Verantwortung gegenüber Mandanten und Markt. **Das bringst du mit** - Du befindest dich in einem Studium der Wirtschaftswissenschaften, des Wirtschaftsingenieurwesens, der (Wirtschafts-) Mathematik oder der Naturwissenschaften und hast Schwerpunkte in den Bereichen Banking, Wirtschaftsprüfung, Risikomanagement, Regulierung oder Finanzmathematik gewählt. - Du studierst mindestens im zweiten Semester oder befindest dich in einem Gap Year zwischen Bachelor und Master. - Die Geschäftsmodelle und die Steuerung einer Bank faszinieren dich ebenso wie die Interaktion in einem internationalen Umfeld und das Geschehen an den globalen Finanzmärkten. - Einschlägige praktische Erfahrungen durch Praktika oder eine Bankausbildung sind wünschenswert, aber keine Voraussetzung. - Sehr gute analytische Fähigkeiten und Kommunikationsstärke in Deutsch und Englisch, die dich in die Lage versetzen, komplexe Sachverhalte zu verstehen und zu erklären, zeichnen dich aus. **Deine Benefits** **Kultur** – Wir möchten, dass du dich bei uns wohl fühlst. Deshalb pflegen wir eine offene und moderne Unternehmens- sowie Führungskultur, in der wir geleistete Arbeit gemeinsam anerkennen und feiern. **Flexibilität** – In Abstimmung mit deinem Team erwartet dich ein Mix aus gemeinsamen Bürotagen und Home Office. Dabei gibt es keine Kernarbeitszeiten – im Rahmen der betrieblichen Anforderungen und arbeitsrechtlichen Vorgaben kannst du deine Arbeitszeit flexibel gestalten. Zusätzlich hast du die Möglichkeit, temporär in über 40 Ländern zu arbeiten. **Masterförderung** – Durch unsere interne Academy, internationale Erfahrungen durch Secondments und kontinuierliches Mentoring entwickelst du dich stetig weiter. Darüber hinaus b",
-   "arbeitszeit": "Vollzeit",
-   "homeoffice": false,
-   "vertragsdauer": "KEINE_ANGABE",
-   "externeUrl": "www.pwc.com"
   },
   {
    "refnr": "10001-1004026836-S",
@@ -677,27 +637,6 @@
    "homeoffice": null,
    "vertragsdauer": "KEINE_ANGABE",
    "externeUrl": "www.scanlab.de",
-   "remoteMoeglich": true
-  },
-  {
-   "refnr": "10001-1003927254-S",
-   "titel": "Werkstudent Recht & Compliance",
-   "beruf": "Wirtschaftsjurist/in",
-   "arbeitgeber": "Caldic Deutschland GmbH",
-   "ort": "40231 Düsseldorf",
-   "region": "NORDRHEIN_WESTFALEN",
-   "veroeffentlicht": "2026-10-28",
-   "art": "PRAKTIKUM_TRAINEE",
-   "vollzeit": false,
-   "link": "https://www.arbeitsagentur.de/jobsuche/jobdetail/10001-1003927254-S",
-   "bekannt": false,
-   "abfrage": "Werkstudent Compliance / bundesweit",
-   "kategorie": "remote",
-   "beschreibung": "Die Caldic Deutschland GmbH sucht eine/n Werkstudent Recht & Compliance (m/w/d) für den Aufbau eines Rechtskatasters für einen Störfallbetrieb mit erweiterten Pflichten: 1. Erfassung aller relevanten Rechtsbereiche für unser Unternehmen 2. Analyse welche Gesetze und Verordnungen für unsere Tätigkeiten zutreffend sind 3. Struktureller Aufbau nach Themenfelder 4. Recherche im digitaler sowie physikalischem Bestand",
-   "arbeitszeit": "Teilzeit vormittags, Teilzeit nachmittags",
-   "homeoffice": true,
-   "vertragsdauer": "BEFRISTET",
-   "externeUrl": "http://www.arbeitsagentur.de",
    "remoteMoeglich": true
   }
  ]
